@@ -43,10 +43,14 @@ body {
 }
 
 .plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 0;
-  padding: 0;
+  padding: 20px;
   width: 280px;
   text-align: center;
 }
@@ -82,14 +86,15 @@ body {
 
 .features li {
   padding: 0;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .features li::before {
-  content: "";
+  content: "✓";
   color: #22c55e;
   font-weight: 700;
   margin-right: 8px;
+  
 }
 
 .btn {
