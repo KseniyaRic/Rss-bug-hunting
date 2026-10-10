@@ -24,6 +24,7 @@ function getFiltered() {
 
   if (search) {
     result = result.filter((p) => p.name === search);
+    return;
   }
 
   if (category !== "all") {
