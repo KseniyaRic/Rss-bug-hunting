@@ -31,11 +31,16 @@ function renderProducts() {
 }
 
 function addToCart(id) {
+  const itemInCart = cart.find((item) => item.id === id);
+  if (itemInCart) {
+  itemInCart.qty += 1;
+  } else {  
   const product = products.find((p) => p.id === id);
   if (!product) {
-    return;
+  return;
   }
   cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+    }
   renderCart();
 }
 
@@ -65,9 +70,10 @@ function applyPromo() {
 }
 
 function clearCart() {
-  cart.splice(0, 1);
+  cart.splice(0);
   renderCart();
 }
+
 
 function renderCart() {
   cartItemsEl.innerHTML = "";
@@ -97,9 +103,14 @@ function renderCart() {
   badgeEl.textContent = totalQty;
   
   totalEl.textContent = total;
-  emptyMsg.hidden = true;
-}
 
+if (cart.length === 0) {
+  emptyMsg.textContent = "Корзина пуста";
+  emptyMsg.hidden = false;
+} else {
+  emptyMsg.hidden = true;  
+}
+}
 promoBtn.addEventListener("click", applyPromo);
 clearBtn.addEventListener("click", clearCart);
 
